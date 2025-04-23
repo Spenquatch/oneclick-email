@@ -1,0 +1,109 @@
+---
+description: Apply these rules when creating the project
+globs:
+alwaysApply: true
+---
+## Project Overview
+
+*   **Type:** Chrome Extension
+*   **Description:** A lightweight Chrome extension for sending the current tab's URL to predefined email addresses with a single click, leveraging the Gmail API with secure OAuth2 integration.
+*   **Primary Goal:** Enable users to email the current tab's URL instantly using a one-click interface in the extension popup, with settings for multiple recipients and customizable email content.
+
+## Project Structure
+
+### Framework-Specific Routing
+
+*   **Directory Rules:**
+
+    *   **[Chrome Extension Manifest V3]:** Use a defined structure with a manifest file at the root, separating the popup, options (settings), and background (service worker) scripts.
+    *   Example 1: Popup UI → `src/popup/popup.html`, `src/popup/popup.ts`
+    *   Example 2: Options UI → `src/options/options.html`, `src/options/options.ts`
+    *   Example 3: Background Service Worker → `src/background/serviceWorker.ts`
+
+### Core Directories
+
+*   **Versioned Structure:**
+
+    *   `src/popup`**:** Contains popup components for the one-click "Email URL" button.
+    *   `src/options`**:** Houses the settings screen for configuring recipient email addresses, email subject, and body.
+    *   `src/background`**:** Implements the service worker logic to manage background tasks, including handling OAuth2 flows and Gmail API calls.
+    *   `manifest.json`**:** Root configuration file enforcing Chrome Extension Manifest V3 specifications.
+
+### Key Files
+
+*   **Stack-Versioned Patterns:**
+
+    *   `manifest.json`**:** Must follow Manifest V3 format with a `service_worker` for background operations.
+    *   `src/popup/popup.html`**:** Popup interface displaying the "Email URL" button and settings option.
+    *   `src/options/options.html`**:** Settings page for user configurations.
+    *   `src/background/serviceWorker.ts`**:** Service worker for handling API integrations and authentication flows.
+
+## Tech Stack Rules
+
+*   **Version Enforcement:**
+
+    *   **Chrome Extension Manifest V3:** Enforce use of Manifest V3 configurations – this means using a service worker in the background script and storing settings in Chrome Storage (synchronized).
+    *   Example: "chrome-extension@MV3": "Use manifest V3 structure; no legacy background pages."
+
+## PRD Compliance
+
+*   **Non-Negotiable:**
+
+    *   "The extension must support multiple recipient email addresses, implement secure OAuth2 flow for Gmail API, and only display error messages without any success confirmations": Ensure that these constraints are embedded in every phase of the development.
+
+## App Flow Integration
+
+*   **Stack-Aligned Flow:**
+
+    *   Popup flow:
+
+        *   User clicks the extension icon in the toolbar.
+        *   A dropdown appears (implemented via `src/popup/popup.html`) with an "Email URL" button and a settings option.
+        *   Clicking "Email URL" triggers the logic in the background service worker (`src/background/serviceWorker.ts`) to send the current tab's URL using the Gmail API.
+        *   Clicking the settings navigates to the configured settings screen (`src/options/options.html`), where users can update recipient addresses, email subject, and body.
+
+## Best Practices
+
+*   **TypeScript**
+
+    *   Utilize strict type-checking and interfaces for all modules.
+    *   Ensure modular code to aid testing and maintenance.
+    *   Use async/await for handling asynchronous operations such as API calls and OAuth2 integrations.
+
+*   **Chrome Extension Development**
+
+    *   Follow Chrome Extension security guidelines, especially regarding remote code execution and separation of concerns between background and UI scripts.
+    *   Optimize for performance by minimizing background script execution time.
+    *   Clearly separate UI (popup/options) from backend logic (service worker).
+
+*   **Chrome Extension Manifest V3**
+
+    *   Adhere strictly to the MV3 requirements: use a service worker for background tasks instead of persistent background pages.
+    *   Regularly validate the manifest file using Chrome Extension tools to catch configuration errors.
+    *   Ensure proper permission management to avoid unnecessary access requests.
+
+## Rules
+
+*   Derive folder/file patterns **directly** from the tech stack documentation for Chrome Extension Manifest V3.
+*   For Chrome Extension Manifest V3: Enforce that the `manifest.json` is at the root with a defined `service_worker` for background tasks.
+*   Do not mix legacy patterns (e.g., avoid using traditional background pages or manifest v2 structures).
+*   Mirror this logic when adding additional components such as content scripts or additional UI pages.
+
+## Rules Metrics
+
+Before starting the project development, create a metrics file in the root of the project called `cursor_metrics.md`.
+
+### Instructions:
+
+*   Each time a cursor rule is used as context, update `cursor_metrics.md`.
+*   Use the following format for `cursor_metrics.md:`
+
+# Rules Metrics
+
+## Usage
+
+The number of times rules is used as context
+
+*   rule-name.mdc: 5
+*   another-rule.mdc: 2
+*   ...other rules

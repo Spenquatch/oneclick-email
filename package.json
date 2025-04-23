@@ -1,0 +1,19 @@
+{
+  "name": "url-gmail-send",
+  "version": "1.0.0",
+  "description": "Send the current tab URL via Gmail with a single click",
+  "scripts": {
+    "build": "tsc && webpack",
+    "watch": "webpack --watch",
+    "dev": "webpack --watch --mode=development"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "ts-loader": "^9.4.0"
+  }
+} 

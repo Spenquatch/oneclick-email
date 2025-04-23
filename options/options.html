@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Gmail Send - Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>URL Gmail Send - Settings</h1>
+    
+    <div class="form-group">
+      <label for="recipients">Recipients (comma separated)</label>
+      <input type="text" id="recipients" placeholder="example@example.com, another@example.com">
+    </div>
+    
+    <div class="form-group">
+      <label for="subject">Email Subject</label>
+      <input type="text" id="subject" placeholder="Check out this link">
+    </div>
+    
+    <div class="form-group">
+      <label for="body">Email Body Template</label>
+      <textarea id="body" rows="4" placeholder="I thought you might find this interesting: {url}"></textarea>
+      <p class="help-text">Use {url} as a placeholder for the current tab's URL</p>
+    </div>
+    
+    <div class="form-actions">
+      <button id="saveButton" class="btn primary">Save Settings</button>
+      <button id="authButton" class="btn secondary">Authenticate with Gmail</button>
+      <div id="statusMessage" class="status-message"></div>
+    </div>
+  </div>
+  <script src="../options.js"></script>
+</body>
+</html> 
